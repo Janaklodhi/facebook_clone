@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from .models import UserProfile
 
+from django.contrib.auth import authenticate, login
+
 def signup(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
@@ -31,9 +33,34 @@ def signup(request):
         )
 
         # Redirect to a success page after signup
-        return redirect('signup_success')  # Redirect to the signup_success page
+        return redirect('login')  # Redirect to the user_login page
 
     return render(request, 'signup.html')
 
-def signup_success(request):
-    return render(request, 'signup_success.html')
+def login(request):
+    if request.method == 'POST':
+        email_or_phone = request.POST.get('email_or_phone')
+        password = request.POST.get('password')
+        user = None
+        if User.objects.filter(email=email_or_phone).exists():
+            user = User.objects.get(email=email_or_phone)
+        elif UserProfile.objects.filter(phone_number=email_or_phone).exists():
+            user_profile = UserProfile.objects.get(phone_number=email_or_phone)
+            user = user_profile.user
+        if user is not None and user.check_password(password):
+            login(request)
+            return redirect('home')
+        print("Invalid credentials")
+        return render(request, 'login.html', {'error': 'Invalid email/phone or password'})
+
+    return render(request, 'login.html')
+
+
+
+def home(request):
+    return render(request, 'home.html')
+
+
+
+# def signup_success(request):
+#     return render(request, 'signup_success.html')
