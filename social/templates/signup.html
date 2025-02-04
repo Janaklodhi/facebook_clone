@@ -124,7 +124,7 @@
         {% endif %}
 
         <!-- Signup form -->
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">  
             {% csrf_token %}
 
             <input type="text" name="first_name" id="first_name" placeholder="First name" required>
@@ -147,7 +147,7 @@
 
         <!-- Footer with link -->
         <div class="signup-footer">
-            <p>Already have an account? <a href="#">Log In</a></p>
+            <p>Already have an account? <a href="{% url 'login' %}">Log In</a></p>
         </div>
     </div>
 </body>

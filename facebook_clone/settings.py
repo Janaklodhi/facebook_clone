@@ -33,8 +33,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-
 #Added
 STATIC_URL = '/static/'
 
