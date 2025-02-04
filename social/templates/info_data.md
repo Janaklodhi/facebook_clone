@@ -675,3 +675,296 @@ Facebook is a **feature-rich** social media platform with several functionalitie
 Facebook is a **massive** platform with features for **social networking, content sharing, business, and entertainment**. If you’re planning to build a similar platform, you’ll need a **strong backend, real-time communication, AI-based personalization, and high security**.
 
 Let me know if you need **help designing or implementing any feature**! 🚀🔥
+
+
+
+
+
+
+✅ ForeignKey (One-to-Many):
+one author  can i have multiple books 
+but one book can have single book 
+
+
+✅ OneToOneField (One-to-One):
+Each user has exactly one profile.
+
+
+✅ ManyToManyField (Many-to-Many):
+A student can enroll in many courses, and a course can have many students.
+
+
+
+
+
+**********************************************************************************************************************************************************************************************************************************************************************************************************************************
+
+
+
+# s = "janak"
+# s1 = "kanak"
+
+# class Solution(object):
+#     def longestPalindrome(self, s):
+#         """
+#         :type s: str
+#         :rtype: str
+#         """
+
+#         # Helper function to check if a substring is a palindrome
+#         def is_palindrome(s, left, right):
+#             while left >= 0 and right < len(s) and s[left] == s[right]:
+#                 left -= 1
+#                 right += 1
+#             return s[left + 1:right]  # Return the longest palindrome substring
+
+
+
+#             s = "babad"
+#             b 
+#             ba
+#             bab 
+#             baba 
+#             bababd 
+            
+
+#         longest_pal = ""
+
+#         # Iterate through each character in the string
+#         for i in range(len(s)):
+#             # Check for odd-length palindrome (single character center)
+#             odd_palindrome = is_palindrome(s, i, i)
+#             if len(odd_palindrome) > len(longest_pal):
+#                 longest_pal = odd_palindrome
+
+#             # Check for even-length palindrome (pair of characters as center)
+#             even_palindrome = is_palindrome(s, i, i + 1)
+#             if len(even_palindrome) > len(longest_pal):
+#                 longest_pal = even_palindrome
+
+#         return longest_pal
+
+
+
+
+
+
+
+
+
+# this is binary search
+
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+nums = [1, 3, 5, 7, 9]
+print(binary_search(nums, 7))  # Output: 3
+
+
+
+
+
+
+# def merge_sort(arr):
+#     if len(arr) <= 1:
+#         return arr  # Base case: already sorted or empty
+
+#     mid = len(arr) // 2  # Find the middle index
+#     left_half = merge_sort(arr[:mid])  # Recursively sort left half
+#     right_half = merge_sort(arr[mid:])  # Recursively sort right half
+
+#     return merge(left_half, right_half)  # Merge the sorted halves
+
+# def merge(left, right):
+#     sorted_list = []
+#     i = j = 0
+
+#     while i < len(left) and j < len(right):  # Merge two sorted lists
+#         if left[i] < right[j]:
+#             sorted_list.append(left[i])
+#             i += 1
+#         else:
+#             sorted_list.append(right[j])
+#             j += 1
+
+#     # Add remaining elements (if any)
+#     sorted_list.extend(left[i:])
+#     sorted_list.extend(right[j:])
+    
+#     return sorted_list
+
+# # Example Usage
+# arr = [38, 27, 43, 3, 9, 82, 10]
+# sorted_arr = merge_sort(arr)
+# print("Merge Sorted Array:", sorted_arr)
+
+
+
+
+
+# # dry run the code 
+
+# # arr[mid] = 3 
+
+# left_half =[38, 27, 43]
+
+# right_half = [ 9, 82, 10]
+
+
+
+
+
+
+
+# # merged_sort works on the divide and conquer
+
+
+
+
+
+# write a programs for merging two sorted array
+
+
+
+
+
+# merged the two sorted array
+
+def merge_sorted_arrays(arr1, arr2):
+    # we need to merged the
+    i, j = 0, 0  # Pointers for both arrays
+    merged_array = []
+
+    # Traverse both arrays and merge them in sorted order
+    while i < len(arr1) and j < len(arr2):
+        if arr1[i] < arr2[j]:
+            merged_array.append(arr1[i])
+            i += 1
+        else:
+            merged_array.append(arr2[j])
+            j += 1
+
+    # Add remaining elements (if any) from both arrays
+    merged_array.extend(arr1[i:])
+    merged_array.extend(arr2[j:])
+
+    return merged_array
+
+# Example Usage
+arr1 = [1, 3, 5, 7]
+arr2 = [2, 4, 6, 8]
+result = merge_sorted_arrays(arr1, arr2)
+print("Merged Sorted Array:", result)
+
+
+
+# list
+# array
+# string 
+# dic 
+# set 
+# queue 
+# linked list 
+# tree 
+# graph 
+
+
+
+# Sample dictionary of employees and their salaries
+employees = {
+    'John': 50000,
+    'Emma': 60000,
+    'Sophia': 70000,
+    'James': 75000
+}
+
+# Increase salary by 10%
+for employee, salary in employees.items():
+    employees[employee] = salary * 1.10  # 10% increase
+
+# Print the updated salaries
+print(employees)
+
+
+
+
+
+
+# first non repeating char in the str 
+
+
+def first_non_repeating_char(s):
+    # Step 1: Count frequency of each character
+    char_count = {}
+    
+    for char in s:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+
+    # Step 2: Find the first character with frequency 1
+    for char in s:
+        if char_count[char] == 1:
+            return char
+    
+    return None  # Return None if all characters repeat
+
+
+
+# Example usage
+s = "aabbcdddee"
+print(first_non_repeating_char(s))  # Output: 'c'
+
+class Stack:
+    def __init__(self):
+        self.stack = []  # Initialize an empty list to represent the stack
+
+    def push(self, item):
+        self.stack.append(item)  # Add the item to the end of the list (top of the stack)
+
+    def pop(self):
+        if not self.is_empty():  # Check if the stack is not empty
+            return self.stack.pop()  # Remove and return the last item (top of the stack)
+        return "Stack is empty!"  # Return a message if the stack is empty
+
+    def peek(self):
+        if not self.is_empty():  # Check if the stack is not empty
+            return self.stack[-1]  # Return the top element without removing it
+        return "Stack is empty!"  # Return a message if the stack is empty
+
+    def is_empty(self):
+        return len(self.stack) == 0  # Return True if the stack is empty
+
+    def size(self):
+        return len(self.stack)  # Return the number of elements in the stack
+
+# Example Usage
+stack = Stack()
+
+stack.push(10)
+stack.push(20)
+stack.push(30)
+
+print("Top of stack:", stack.peek())  # Output: 30
+print("Stack size:", stack.size())  # Output: 3
+
+print("Pop item:", stack.pop())  # Output: 30
+print("Stack size after pop:", stack.size())  # Output: 2
+
+print("Top of stack:", stack.peek())  # Output: 20
+print("Is stack empty?", stack.is_empty())  # Output: False
+
+
+
+
+

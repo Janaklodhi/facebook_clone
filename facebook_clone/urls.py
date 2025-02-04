@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+    
+admin.site.site_header = "My Facebook Page Admin"  # Title on the top-left corner
+admin.site.site_title = "My Facebook Page"  # Title in browser tab
+admin.site.index_title = "Welcome to My Facebook Page Admin"  # Title for the index page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Include the app's URLs
-    path('', include('social.urls')),  # Replace 'your_app_name' with the actual name of your app
+    path('', include('social.urls')),  # Replace     'your_app_name' with the actual name of your app
 ]
